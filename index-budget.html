@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+		<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<link rel="stylesheet" href="css/main.css" />
+		<script src="js/xlsx.full.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" language="javascript">
+//			$(function() {
+//				$("#iframepage").load(function() {
+//					$(this).height($(this).contents().height());
+//				})
+//			});
+		</script>
+	</head>
+
+	<body>
+		<div data-role="page" id="pageOne">
+			<div data-role="header" data-position="fixed" data-theme="b">
+				<h1>磁悬浮选型</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<ul data-role="listview" class="main-ul">
+					<li class="select-build">
+						<div class="ui-field-contain ui-main-list" style="padding:0;margin:0;">
+							<label for="build-select"><img src="img/jzlx.png" alt=""  />建筑类型:</label>
+							<div style="width:140px;float: right;">
+								<select name="build-select" id="build-select" data-native-menu="false">
+                    		<option value=0>酒店</option>
+                    		<option value=1>工厂</option>
+                    		<option value=2>数据中心</option>
+                    		<option value=3>办公楼</option>
+                    		<option value=4>医院</option>
+                    		</select>
+							</div>
+
+						</div>
+						<!--<a style="float: right; padding-right: 100px;"
+                         class="ui-icon-carat-d ui-btn-icon-right">按钮</a>-->
+					</li>
+					<li class="select-build">
+						<div class="ui-field-contain ui-main-list" style="padding:0;margin:0;">
+							<label for="area-select"><img src="img/dzqy.png" alt=""  />地址区域:</label>
+							<div style="width:140px;float: right;">
+								<select name="area-select" id="addr-select" data-native-menu="false">
+                    		<option value=0>华北</option>
+                    		<option value=1>中原</option>
+                    		<option value=2>中西南</option>
+                    		<option value=3>华东</option>
+                    		<option value=4>华南</option>
+                    		</select>
+							</div>
+
+						</div>
+					</li>
+					<li>
+						<div class="ui-field-contain ui-main-list" style="padding:0;margin:0;">
+							<span for="area"><img src="img/symj.png" alt=""  />使用面积：</span>
+							<div style="float:right;">
+								<div class="suffix" style="margin-left: 5px;">㎡</div>
+								<div style="float: right;">
+									<input type="number" name="area" id="area" data-inline="true" value="" />
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<ul data-role="listview" style="margin-top: 40px;" class="main-ul">
+					<li>
+						<div class="ui-field-contain ui-main-list" style="padding:0;margin:0;">
+
+							<span><img src="img/dwzll.png" alt=""  />单位制冷量：</span>
+							<div style="float:right;">
+								<div class="suffix" style="margin-left: 10px;">W</div>
+								<div style="float: right;">
+									<input type="number" name="unit-cool" id="unit-cool" data-inline="true" value="" />
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ui-field-contain ui-main-list" style="padding:0;margin:0;">
+							<span for="cool-load"><img src="img/zllfh.png" alt=""  />设计冷负荷：</span>
+							<div style="float:right;">
+								<div class="suffix" style="margin-left: 5px;">KW</div>
+								<div style="float: right;">
+									<input type="hidden" id="cool-load" />
+									<span id="cool-load-show" style="font-weight: bold;">0</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ui-field-contain ui-main-list" style="padding:0;margin:0;">
+							<span for="shu"><img src="img/xqts.png" alt=""  />需求台数：</span>
+							<div style="float:right;">
+								<div class="suffix" style="margin-left: 5px;">台</div>
+								<div style="float: right;">
+									<input type="number" name="shu" id="shu" data-inline="true" value="" />
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<!--<ul data-role="listview" style="margin-top: 40px;" class="main-ul">
+					<li>
+						<div class="ui-field-contain ui-main-list" style="padding:0;margin:0;">
+							<label for="unit-cool"><img src="img/us.png" class="ui-li-icon"/>冷冻水进水温度：</label>
+							<div class="suffix" style="margin-left: 5px;">℃</div>
+							<div style="float: right;">
+								<input type="number" name="unit-cool" id="unit-cool" data-inline="true" value="16" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ui-field-contain ui-main-list" style="padding:0;margin:0;">
+							<label for="unit-cool"><img src="img/us.png" class="ui-li-icon"/>冷冻水出水温度：</label>
+							<div class="suffix" style="margin-left: 5px;">℃</div>
+							<div style="float: right;">
+								<input type="number" name="unit-cool" id="unit-cool" data-inline="true" value="26" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ui-field-contain ui-main-list" style="padding:0;margin:0;">
+							<label for="unit-cool"><img src="img/us.png" class="ui-li-icon"/>冷却水进水温度：</label>
+							<div class="suffix" style="margin-left: 5px;">℃</div>
+							<div style="float: right;">
+								<input type="number" name="unit-cool" id="unit-cool" data-inline="true" value="6" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ui-field-contain ui-main-list" style="padding:0;margin:0;">
+							<label for="unit-cool"><img src="img/us.png" class="ui-li-icon"/>冷却水出水温度：</label>
+							<div class="suffix" style="margin-left: 5px;">℃</div>
+							<div style="float: right;">
+								<input type="number" name="unit-cool" id="unit-cool" data-inline="true" value="8" />
+							</div>
+						</div>
+					</li>
+
+				</ul>-->
+				<div style="margin-top: 20px;text-align:center;">
+					<a href="./index-budget.html#pageTwo" id="maglev" data-role="button" data-inline="true" style="width:130px ;">磁悬浮选型</a>
+					<a href="./index-budget.html#pageTwo" id="centrifuge" data-role="button" data-inline="true" style="width:130px ;">普通机选型</a>
+				</div>
+
+			</div>
+			<!-- /content -->
+			<div data-role="footer" data-position="fixed" data-theme="a">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="./index-budget.html" data-prefetch="true" data-transition="flip">
+								<div><img src="img/cxf.png" width="40px" /></div>
+								<div style="color: #009CFF;">磁悬浮选型</div>
+							</a>
+						</li>
+						<li>
+							<a href="./index-budget.html#pageThree" class="budget-a" data-prefetch="true" data-transition="flip">
+								<div><img src="img/jn_.png" width="40px" /></div>
+								<div style="color: #999999;">节能测算</div>
+							</a>
+						</li>
+						<li>
+							<a href="./index-budget.html#pageAnli" class="budget-b" data-prefetch="true" data-transition="flip">
+								<div><img src="img/jnal_.png" width="40px" /></div>
+								<div style="color: #999999;">经典案例</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- /navbar -->
+			</div>
+			<!-- /footer -->
+		</div>
+		<!-- /page -->
+
+		<div data-role="page" id="pageTwo">
+			<div data-role="header" data-position="fixed" data-theme="b">
+				<h1>磁悬浮选型</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<img border="0" src="./img/meglev_big_icon.png" width="100%" id="img-xuanxing" />
+				<label style="color: #2CADFF;margin-top: 10px;font-weight: bold;">选型详情</label>
+				<ul data-role="listview" data-inset="true" id="pagetwo-ul"></ul>
+			</div>
+			<!-- /content -->
+			<div data-role="footer" data-position="fixed" data-theme="a">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="./index-budget.html" data-prefetch="true" data-transition="flip" data-direction="reverse">
+								<div><img src="img/cxf.png" width="40px" /></div>
+								<div style="color: #009CFF;">磁悬浮选型</div>
+							</a>
+						</li>
+						<li>
+							<a href="./index-budget.html#pageThree" class="budget-a" data-prefetch="true" data-transition="flip">
+								<div><img src="img/jn_.png" width="40px" /></div>
+								<div style="color: #999999;">节能测算</div>
+							</a>
+						</li>
+						<li>
+							<a href="./index-budget.html#pageAnli" class="budget-b" data-prefetch="true" data-transition="flip">
+								<div><img src="img/jnal_.png" width="40px" /></div>
+								<div style="color: #999999;">经典案例</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- /navbar -->
+			</div>
+			<!-- /footer -->
+		</div>
+		<div data-role="page" id="pageThree">
+			<div data-role="header" data-position="fixed" data-theme="b">
+				<h1>节能测算</h1>
+			</div>
+			<div data-role="content">
+				<ul data-role="listview" class="main-ul">
+					<li>
+						<div class="ui-field-contain ui-main-list" style="padding:0;margin:0;">
+							<span for="daysinyear"><img src="img/day.png" alt=""  />年运行天数：</span>
+							<div style="float: right;">
+								<input type="number" name="daysinyear" id="daysinyear" class="calculate-item" data-inline="true" value="" placeholder="单位:天" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ui-field-contain ui-main-list" style="padding:0;margin:0;">
+							<span for="hour"><img src="img/hours.png" alt=""  />每天运行小时数：</span>
+							<div style="float:right;">
+								<!--<div class="suffix" style="margin-left: 5px;">时</div>-->
+								<div style="float: right;">
+									<input type="number" name="hour" id="hour" data-inline="true" class="calculate-item" value="" placeholder="单位:时" />
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ui-field-contain ui-main-list" style="padding:0;margin:0;">
+							<span for="price"><img src="img/danjia.png" alt=""  />电费单价：</span>
+							<div style="float:right;">
+								<!--<div class="suffix" style="margin-left: 5px;">元/时</div>-->
+								<div style="float: right;">
+									<input type="number" name="price" id="price" data-inline="true" class="calculate-item" value="" placeholder="单位:元/度" />
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ui-field-contain ui-main-list" style="padding:0;margin:0;">
+							<span for="xishu"><img src="img/xishu.png" alt=""  />负荷系数：</span>
+							<!--<div class="suffix" style="margin-left: 30px;">&nbsp;</div>-->
+							<div style="float: right;">
+								<input type="number" name="xishu" id="xishu" data-inline="true" class="calculate-item" value="0.7" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ui-field-contain ui-main-list" style="padding:0;margin:0;">
+							<span for="yusuan1"><img src="img/yusuan.png" alt=""  />磁悬浮购买预算：</span>
+							<div style="float:right;">
+								<!--<div class="suffix" style="margin-left: 10px;">万元</div>-->
+								<div style="float: right;">
+									<input type="number" name="yusuan1" id="yusuan1" data-inline="true" class="calculate-item" value="" placeholder="单位:万元" />
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ui-field-contain ui-main-list" style="padding:0;margin:0;">
+							<span for="yusuan2"><img src="img/yusuan.png" alt=""  />离心机购买预算：</span>
+							<div style="float:right;">
+								<!--<div class="suffix" style="margin-left: 10px;">万元</div>-->
+								<div style="float: right;">
+									<input type="number" name="yusuan2" id="yusuan2" data-inline="true" class="calculate-item" value="" placeholder="单位:万元" />
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<p style="margin-top: 30px;font-weight: bold;">磁悬浮机型：</p>
+				<ul data-role="listview" data-inset="true">
+					<li data-icon="false">
+						<a href="#" class="ui-a-list  my-aaa">
+							<img src="img/meglev_small_icon.png" width="50px">
+							<p>年总耗电量：<span style="float: right;"><span id="total_kwh1"></span>万KWH</span>
+							</p>
+							<p>年总电费：<span style="float: right;"><span id="total_rmb1"></span>万元</span>
+							</p>
+							<span>
+								<div  style="font-weight: bold;float:left;margin-top: 10px;" >年维保费用：
+								</div>
+							<div style="float: right;margin-top: 10px;">
+								<span style="margin-left: 10px;float: right;">万元</span>
+							<span style="float: right;">
+								<div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset" style="margin-top:-10px;">
+									<input data-role ="none" type="number" name="weibao1" data-inline="true" id="weibao1" style="text-align: right;width:80px;"  value="8" />
+								</div>
+							</span>
+			</div>
+			</span>
+			</a>
+			</li>
+
+			</ul>
+
+			<p style="font-weight: bold;">普通机型：</p>
+			<ul data-role="listview" data-inset="true">
+				<li data-icon="false">
+					<a href="#" class="ui-a-list my-aaa">
+						<img src="img/meglev_small_icon.png" width="50px">
+						<p>年总耗电量：<span style="float: right;"><span id="total_kwh2"></span>万KWH</span>
+						</p>
+						<p>年总电费：<span style="float: right;"><span id="total_rmb2"></span>万元</span>
+						</p>
+						<span><div style="font-weight: bold;float:left;margin-top: 10px;" >年维保费用：</div>
+							<div style="float: right;">
+								<span style="margin-left: 10px;float: right;margin-top: 10px;">万元</span>
+						<span style="float: right;margin-top: 10px;">
+								<div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset" style="margin-top:-10px;">
+									<input data-role ="none" type="number" name="weibao2" data-inline="true" id="weibao2" style="text-align: right;border: 0;width:80px;" value="12" />
+								</div>
+							</span>
+		</div>
+		</span>
+		</a>
+		</li>
+		</ul>
+		</div>
+		<div data-role="content" style="margin-top: -30px;text-align:center;">
+			<a href="#" id="submit_btn" data-role="button" data-inline="true" style="padding-left: 40px;padding-right: 40px;background-color: #009CFF;color: #fff;">测算</a>
+			<br />
+			<br />
+			<a href="#" data-role="button"><span >回收期:&nbsp;&nbsp;&nbsp;&nbsp;</span><span id="budget-result" style="color: #009CFF;">待计算...</span></a>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-theme="a">
+			<div data-role="navbar">
+				<ul>
+					<ul>
+						<li>
+							<a href="./index-budget.html" data-prefetch="true" data-transition="flip" data-direction="reverse">
+								<div><img src="img/cxf_.png" width="40px" /></div>
+								<div style="color: #999999;">磁悬浮选型</div>
+							</a>
+						</li>
+						<li>
+							<a href="./index-budget.html#pageThree" class="budget-a" data-prefetch="true" data-transition="flip">
+								<div><img src="img/jn.png" width="40px" /></div>
+								<div style="color: #009CFF;">节能测算</div>
+							</a>
+						</li>
+						<li>
+							<a href="./index-budget.html#pageAnli" class="budget-b" data-prefetch="true" data-transition="flip">
+								<div><img src="img/jnal_.png" width="40px" /></div>
+								<div style="color: #999999;">经典案例</div>
+							</a>
+						</li>
+					</ul>
+			</div>
+			<!-- /navbar -->
+		</div>
+		<!-- /footer -->
+		</div>
+		<div data-role="page" id="pageAnli">
+			<div data-role="header" data-position="fixed" data-theme="b">
+				<h1>经典案例</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<!--#include file="test.htm"-->
+				<!--<iframe src="test.htm" frameBorder="0" width="100%" scrolling="yes" height="800"></iframe>-->
+
+				<iframe src="test.htm" id="iframepage" name="caseiframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" width="100%" height="3593px"></iframe>
+			</div>
+			<div data-role="footer" data-position="fixed" data-theme="a">
+				<div data-role="navbar">
+					<ul>
+						<ul>
+							<li>
+								<a href="./index-budget.html" data-prefetch="true" data-transition="flip" data-direction="reverse">
+									<div><img src="img/cxf_.png" width="40px" /></div>
+									<div style="color: #999999;">磁悬浮选型</div>
+								</a>
+							</li>
+							<li>
+								<a href="./index-budget.html#pageThree" class="budget-a" data-prefetch="true" data-transition="flip">
+									<div><img src="img/jn_.png" width="40px" /></div>
+									<div style="color: #999999;">节能测算</div>
+								</a>
+							</li>
+							<li>
+								<a href="./index-budget.html#pageAnli" class="budget-b" data-prefetch="true" data-transition="flip">
+									<div><img src="img/jnal.png" width="40px" /></div>
+									<div style="color: #009CFF;">经典案例</div>
+								</a>
+							</li>
+						</ul>
+				</div>
+				<!-- /navbar -->
+			</div>
+			<!-- /footer -->
+		</div>
+	</body>
+
+</html>

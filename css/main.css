@@ -1,0 +1,100 @@
+﻿.bg-color {
+	background: #F6F6F6;
+}
+
+.ui-main-list >span,
+.ui-main-list >label {
+	font-weight: bold;
+	float: left;
+}
+
+.suffix {
+	float: right;
+	font-weight: bold;
+}
+
+.ui-main-list img {
+	margin-right: 10px;
+}
+
+ul.main-ul>li {
+	background-color: #F6F6F6 !important;
+	line-height: 50px !important;
+	padding: 0.2em 1em !important;
+}
+.ui-listview>li.select-build {
+	padding: 0.1em 1em !important;
+}
+ul.main-ul img {
+	height: 30px;
+	vertical-align: middle;
+}
+
+.wenjian {
+	float: left;
+	background: url(../img/us.png) no-repeat 50% 50%;
+	/*margin-left: 5px;*/
+}
+
+.div-left {
+	width: 150px;
+	height: 100px;
+	overflow: hidden;
+}
+
+.div-left>img {
+	margin-top: 20px;
+}
+
+.div-right {
+	position: absolute;
+	left: 60px;
+	top: 10px;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	width: 80%;
+}
+
+a.ui-a-list img {
+	margin-top: 20px;
+	margin-left: 0px;
+}
+
+a.ui-a-list p {
+	font-weight: bold !important;
+	font-size: 16px !important;
+}
+
+.ui-input-text>input {
+	width: 120px;
+	text-align: right;
+}
+
+.jzlx {
+	background: url(../img/jzlx.png) no-repeat;
+}
+
+.select-div {
+	display: block;
+}
+
+.select-div>.ui-select {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.div-select {
+	margin: 0;
+	padding: 0;
+	height: 100px;
+}
+
+a.my-aaa {
+	padding-left: 60px !important;
+}
+
+a.my-aaa>img {
+	margin-top: 40px;
+}
